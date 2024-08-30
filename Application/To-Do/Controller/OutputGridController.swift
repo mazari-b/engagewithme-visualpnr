@@ -16,7 +16,7 @@ class OutputGridController: UITableViewController {
     }
     
     fileprivate func initialiseVoid() {
-        let void = EmptyState(.emptySearch)
+        let void = VoidBeing(.emptySearch)
         self.tableView.backgroundView = void
         self.tableView.setNeedsLayout()
         self.tableView.layoutIfNeeded()

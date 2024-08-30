@@ -173,7 +173,7 @@ class TDViewController: UITableViewController {
     }
     
     fileprivate func initialiseVoidSt() {
-        let voidBG = EmptyState(.emptyList)
+        let voidBG = VoidBeing(.emptyList)
         tableView.backgroundView = voidBG
         tableView.setNeedsLayout()
         tableView.layoutIfNeeded()

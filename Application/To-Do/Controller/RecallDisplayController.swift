@@ -39,7 +39,7 @@ class RecallDisplayController: UIViewController {
     // Handling application lgc
     fileprivate func initialiseVoid() {
         DispatchQueue.main.async {
-            let voidBG = EmptyState(.emptyHistory)
+            let voidBG = VoidBeing(.emptyHistory)
             self.formerGridDisplay.backgroundView = voidBG
             self.formerGridDisplay.setNeedsLayout()
             self.formerGridDisplay.layoutIfNeeded()

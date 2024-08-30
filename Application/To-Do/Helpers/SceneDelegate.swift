@@ -7,7 +7,7 @@
 
 import UIKit
 
-class viewDistributor: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     

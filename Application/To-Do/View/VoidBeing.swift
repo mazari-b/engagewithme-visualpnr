@@ -1,16 +1,15 @@
 //
-//  EmptyState.swift
-//  To-Do
+//  VoidBeing.swift
 //
-//  Created by Bayu Kurniawan on 10/10/20.
-//  Copyright © 2020 Aaryan Kothari. All rights reserved.
+//  Created by Mazari Bahaduri on 28/07/24.
+//  Copyright © 2024 Mazari Bahaduri. All rights reserved.
 //
 
 import UIKit
 
-class EmptyState: UIView {
+class VoidBeing: UIView {
     
-    private lazy var imageView: UIImageView = {
+    private lazy var visualDisplay: UIImageView = {
         let IV = UIImageView()
         IV.tintColor = .black
         IV.contentMode = .scaleAspectFit
@@ -18,7 +17,7 @@ class EmptyState: UIView {
         return IV
     }()
     
-    private lazy var headingLabel: UILabel = {
+    private lazy var mainTitle: UILabel = {
         let text = UILabel()
         text.font = UIFont.boldSystemFont(ofSize: 18.0)
         text.textColor = .black
@@ -28,7 +27,7 @@ class EmptyState: UIView {
         return text
     }()
     
-    private lazy var subheadingLabel: UILabel = {
+    private lazy var miniMainTitle: UILabel = {
         let text = UILabel()
         text.font = UIFont.systemFont(ofSize: 15.0, weight: .medium)
         text.textColor = .darkGray
@@ -42,12 +41,12 @@ class EmptyState: UIView {
     init(_ type : EmptyStateType) {
         super.init(frame: .zero)
         
-        self.imageView.image = type.image
-        self.headingLabel.text = type.heading
-        self.subheadingLabel.text = type.subheading
-        self.subheadingLabel.numberOfLines = 0
+        self.visualDisplay.image = type.image
+        self.mainTitle.text = type.heading
+        self.miniMainTitle.text = type.subheading
+        self.miniMainTitle.numberOfLines = 0
         
-        let SV = UIStackView(arrangedSubviews: [imageView, headingLabel, subheadingLabel])
+        let SV = UIStackView(arrangedSubviews: [visualDisplay, mainTitle, miniMainTitle])
         SV.axis = .vertical
         SV.spacing = 10.0
         
@@ -71,7 +70,7 @@ class EmptyState: UIView {
         var heading : String{
             switch self {
             case .emptySearch:
-                return "No tasks found :("
+                return "No tasks found"
             case .emptyList:
                 return "No tasks added"
             case .emptyHistory:
