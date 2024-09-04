@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07F46C8525277C7E007DC6AC /* SortTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F46C8425277C7E007DC6AC /* SortTypes.swift */; };
-		29A7E5952C6F93C2007383CE /* UniqueDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7E5942C6F93C2007383CE /* UniqueDisplayController.swift */; };
+		29A7E5952C6F93C2007383CE /* UniqueDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7E5942C6F93C2007383CE /* UniqueDisplay.swift */; };
 		29D18CE52C6FD901003B6ADE /* ImagesHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D18CE42C6FD901003B6ADE /* ImagesHelp.swift */; };
 		29D18CE72C6FD980003B6ADE /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D18CE62C6FD980003B6ADE /* Notify.swift */; };
 		29D18CE92C6FE01E003B6ADE /* Predefined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D18CE82C6FE01D003B6ADE /* Predefined.swift */; };
@@ -20,15 +20,15 @@
 		5BBE55A82523A42700090F87 /* To_Do.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE55A62523A42700090F87 /* To_Do.xcdatamodeld */; };
 		5BBE55AA2523A42C00090F87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBE55A92523A42C00090F87 /* Assets.xcassets */; };
 		5BBE55AD2523A42C00090F87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBE55AB2523A42C00090F87 /* LaunchScreen.storyboard */; };
-		5BBE55B72523A90A00090F87 /* TDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE55B62523A90A00090F87 /* TDViewController.swift */; };
-		5BBE55C925245DBF00090F87 /* TInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE55C825245DBF00090F87 /* TInfoViewController.swift */; };
+		5BBE55B72523A90A00090F87 /* TDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE55B62523A90A00090F87 /* TDView.swift */; };
+		5BBE55C925245DBF00090F87 /* TIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE55C825245DBF00090F87 /* TIView.swift */; };
 		5BBE55CB2524623900090F87 /* TextviewBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE55CA2524623900090F87 /* TextviewBorder.swift */; };
-		603B4C66252647BD00579EC6 /* OutputGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B4C65252647BD00579EC6 /* OutputGridController.swift */; };
+		603B4C66252647BD00579EC6 /* OutputGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B4C65252647BD00579EC6 /* OutputGrid.swift */; };
 		6555BCAC252C3FAC00E7DF3D /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555BCAB252C3FAC00E7DF3D /* TaskTests.swift */; };
-		8E6209BD25291AF0004CE4B9 /* NewUserDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6209BC25291AF0004CE4B9 /* NewUserDisplayController.swift */; };
+		8E6209BD25291AF0004CE4B9 /* NewUserDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6209BC25291AF0004CE4B9 /* NewUserDisplay.swift */; };
 		AB95E033252712C4008C4E48 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB95E032252712C4008C4E48 /* TodoCell.swift */; };
 		E924B487252D63FE004FD116 /* visualAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924B486252D63FD004FD116 /* visualAdd.swift */; };
-		FFA6683A2530E07F004E1DE3 /* RecallDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA668392530E07F004E1DE3 /* RecallDisplayController.swift */; };
+		FFA6683A2530E07F004E1DE3 /* RecallDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA668392530E07F004E1DE3 /* RecallDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 
 /* Begin PBXFileReference section */
 		07F46C8425277C7E007DC6AC /* SortTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTypes.swift; sourceTree = "<group>"; };
-		29A7E5942C6F93C2007383CE /* UniqueDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueDisplayController.swift; sourceTree = "<group>"; };
+		29A7E5942C6F93C2007383CE /* UniqueDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueDisplay.swift; sourceTree = "<group>"; };
 		29D18CE42C6FD901003B6ADE /* ImagesHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesHelp.swift; sourceTree = "<group>"; };
 		29D18CE62C6FD980003B6ADE /* Notify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
 		29D18CE82C6FE01D003B6ADE /* Predefined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Predefined.swift; sourceTree = "<group>"; };
@@ -57,18 +57,18 @@
 		5BBE55A92523A42C00090F87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BBE55AC2523A42C00090F87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BBE55AE2523A42C00090F87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "To-Do/Helpers/Info.plist"; sourceTree = SOURCE_ROOT; };
-		5BBE55B62523A90A00090F87 /* TDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDViewController.swift; sourceTree = "<group>"; };
-		5BBE55C825245DBF00090F87 /* TInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TInfoViewController.swift; sourceTree = "<group>"; };
+		5BBE55B62523A90A00090F87 /* TDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDView.swift; sourceTree = "<group>"; };
+		5BBE55C825245DBF00090F87 /* TIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIView.swift; sourceTree = "<group>"; };
 		5BBE55CA2524623900090F87 /* TextviewBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextviewBorder.swift; sourceTree = "<group>"; };
-		603B4C65252647BD00579EC6 /* OutputGridController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputGridController.swift; sourceTree = "<group>"; };
+		603B4C65252647BD00579EC6 /* OutputGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputGrid.swift; sourceTree = "<group>"; };
 		6555BCA9252C3FAC00E7DF3D /* To-DoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "To-DoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6555BCAB252C3FAC00E7DF3D /* TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		6555BCAD252C3FAC00E7DF3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E6209BC25291AF0004CE4B9 /* NewUserDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserDisplayController.swift; sourceTree = "<group>"; };
+		8E6209BC25291AF0004CE4B9 /* NewUserDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserDisplay.swift; sourceTree = "<group>"; };
 		AB95E032252712C4008C4E48 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		E924B486252D63FD004FD116 /* visualAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = visualAdd.swift; sourceTree = "<group>"; };
 		E924B48A252D686A004FD116 /* To_Do2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = To_Do2.xcdatamodel; sourceTree = "<group>"; };
-		FFA668392530E07F004E1DE3 /* RecallDisplayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallDisplayController.swift; sourceTree = "<group>"; };
+		FFA668392530E07F004E1DE3 /* RecallDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,12 +142,12 @@
 		5BBE55C0252453D700090F87 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5BBE55B62523A90A00090F87 /* TDViewController.swift */,
-				5BBE55C825245DBF00090F87 /* TInfoViewController.swift */,
-				603B4C65252647BD00579EC6 /* OutputGridController.swift */,
-				8E6209BC25291AF0004CE4B9 /* NewUserDisplayController.swift */,
-				FFA668392530E07F004E1DE3 /* RecallDisplayController.swift */,
-				29A7E5942C6F93C2007383CE /* UniqueDisplayController.swift */,
+				5BBE55B62523A90A00090F87 /* TDView.swift */,
+				5BBE55C825245DBF00090F87 /* TIView.swift */,
+				603B4C65252647BD00579EC6 /* OutputGrid.swift */,
+				8E6209BC25291AF0004CE4B9 /* NewUserDisplay.swift */,
+				FFA668392530E07F004E1DE3 /* RecallDisplay.swift */,
+				29A7E5942C6F93C2007383CE /* UniqueDisplay.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -286,10 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29A7E5952C6F93C2007383CE /* UniqueDisplayController.swift in Sources */,
+				29A7E5952C6F93C2007383CE /* UniqueDisplay.swift in Sources */,
 				07F46C8525277C7E007DC6AC /* SortTypes.swift in Sources */,
 				4F953E502531C25E0027144C /* VoidBeing.swift in Sources */,
-				5BBE55B72523A90A00090F87 /* TDViewController.swift in Sources */,
+				5BBE55B72523A90A00090F87 /* TDView.swift in Sources */,
 				29D18CE72C6FD980003B6ADE /* Notify.swift in Sources */,
 				5BBE559E2523A42700090F87 /* scriptDistributor.swift in Sources */,
 				29D18CE92C6FE01E003B6ADE /* Predefined.swift in Sources */,
@@ -298,11 +298,11 @@
 				29D18CE52C6FD901003B6ADE /* ImagesHelp.swift in Sources */,
 				5BBE55CB2524623900090F87 /* TextviewBorder.swift in Sources */,
 				E924B487252D63FE004FD116 /* visualAdd.swift in Sources */,
-				603B4C66252647BD00579EC6 /* OutputGridController.swift in Sources */,
-				8E6209BD25291AF0004CE4B9 /* NewUserDisplayController.swift in Sources */,
-				5BBE55C925245DBF00090F87 /* TInfoViewController.swift in Sources */,
+				603B4C66252647BD00579EC6 /* OutputGrid.swift in Sources */,
+				8E6209BD25291AF0004CE4B9 /* NewUserDisplay.swift in Sources */,
+				5BBE55C925245DBF00090F87 /* TIView.swift in Sources */,
 				3307EC692537AFB100963CC4 /* Extensions.swift in Sources */,
-				FFA6683A2530E07F004E1DE3 /* RecallDisplayController.swift in Sources */,
+				FFA6683A2530E07F004E1DE3 /* RecallDisplay.swift in Sources */,
 				AB95E033252712C4008C4E48 /* TodoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

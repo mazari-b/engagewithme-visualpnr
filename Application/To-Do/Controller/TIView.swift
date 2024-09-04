@@ -1,5 +1,5 @@
 //
-//  TInfoViewController.swift
+//  TInfoView.swift
 //
 //  Created by Mazari Bahaduri on 26/07/24.
 //  Copyright © 2024 Mazari Bahaduri. All rights reserved.
@@ -14,7 +14,7 @@ protocol SeparateTasks: class {
     func hasClickedModify(task : Task)
 }
 
-class TInfoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     // going ->
     @IBOutlet private weak var taskNameBox: UITextField!
@@ -205,7 +205,7 @@ class TInfoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let additionalName = sTaskNameBox.text?.trim() ?? .empty
         /// are we modifying?
         if self.item == nil {
-            let primaryCtrl = self.distribute as! TDViewController
+            let primaryCtrl = self.distribute as! TDView
             self.item = Task(context: primaryCtrl.CDmanagedojt)
         }
         item?.title = name
@@ -243,7 +243,7 @@ class TInfoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
 }
-extension TInfoViewController: UITextFieldDelegate, UITextViewDelegate {
+extension TIView: UITextFieldDelegate, UITextViewDelegate {
     func textFieldShouldReturn(_ stringFromField: UITextField) -> Bool {
         if stringFromField == taskNameBox {
             stringFromField.resignFirstResponder()
@@ -267,7 +267,7 @@ extension TInfoViewController: UITextFieldDelegate, UITextViewDelegate {
     }
 }
 
-extension TInfoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TIView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ CView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return visualsAdded.count

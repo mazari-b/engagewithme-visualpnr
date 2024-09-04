@@ -1,5 +1,5 @@
 //
-//  TDViewController.swift
+//  TDView.swift
 //
 //  Created by Mazari Bahaduri on 25/07/24.
 //  Copyright © 2024 Mazari Bahaduri. All rights reserved.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class TDViewController: UITableViewController {
+class TDView: UITableViewController {
     
     // Definition of variables -> referencing outlets
     /// Display task items
@@ -21,7 +21,7 @@ class TDViewController: UITableViewController {
     var findCtrl: UISearchController!
     
     /// OutputTableCtrl presents the resulting finding
-    var outputTableCtrl: OutputGridController!
+    var outputTableCtrl: OutputGrid!
     
     /// Array keeping track of task items
     var tasksToCompleteList : [Task] = []
@@ -143,7 +143,7 @@ class TDViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let itemDescVisCont = segue.destination as? TInfoViewController {
+        if let itemDescVisCont = segue.destination as? TIView {
             itemDescVisCont.hidesBottomBarWhenPushed = true
             itemDescVisCont.distribute = self
             itemDescVisCont.item = sender as? Task
@@ -151,7 +151,7 @@ class TDViewController: UITableViewController {
     }
     
     fileprivate func presentPreMainOptional() {
-        guard let newUserCtrl = self.storyboard?.instantiateViewController(identifier: Predefined.VC.Onboarding) as? NewUserDisplayController else { return }
+        guard let newUserCtrl = self.storyboard?.instantiateViewController(identifier: Predefined.VC.Onboarding) as? NewUserDisplay else { return }
         
         if !newUserCtrl.hasDisplayed() {
             DispatchQueue.main.async {
@@ -162,7 +162,7 @@ class TDViewController: UITableViewController {
     
     fileprivate func initialiseFindCtrl() {
         outputTableCtrl =
-            self.storyboard?.instantiateViewController(withIdentifier: Predefined.VC.ResultsTable) as? OutputGridController
+            self.storyboard?.instantiateViewController(withIdentifier: Predefined.VC.ResultsTable) as? OutputGrid
         outputTableCtrl.tableView.delegate = self
         findCtrl = UISearchController(searchResultsController: outputTableCtrl)
         findCtrl.delegate = self
@@ -249,7 +249,7 @@ class TDViewController: UITableViewController {
     }
 }
 
-extension TDViewController: NSFetchedResultsControllerDelegate {
+extension TDView: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ remote: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -279,7 +279,7 @@ extension TDViewController: NSFetchedResultsControllerDelegate {
 }
 
 /// submit or edit items
-extension TDViewController : SeparateTasks{
+extension TDView : SeparateTasks{
     func hasClickedSubmit(task: Task) {
         tasksToCompleteList.append(task)
         do {
@@ -299,9 +299,9 @@ extension TDViewController : SeparateTasks{
 }
 
 //searching
-extension TDViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+extension TDView: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for findCtrl: UISearchController) {
-        if let text: String = findCtrl.searchBar.text?.lowercased(), text.count > 0, let outcomeCtrl = findCtrl.searchResultsController as? OutputGridController {
+        if let text: String = findCtrl.searchBar.text?.lowercased(), text.count > 0, let outcomeCtrl = findCtrl.searchResultsController as? OutputGrid {
             outcomeCtrl.itemsArray = tasksToCompleteList.filter({ (task) -> Bool in
                 if task.title?.lowercased().contains(text) == true || task.subTasks?.lowercased().contains(text) == true {
                     return true
@@ -324,7 +324,7 @@ extension TDViewController: UISearchControllerDelegate, UISearchResultsUpdating,
 }
 
 // organise
-extension TDViewController {
+extension TDView {
     
     func previewOrgNotifCtrl() {
         let notifier = UIAlertController(title: nil, message: "Choose sort type", preferredStyle: .actionSheet)

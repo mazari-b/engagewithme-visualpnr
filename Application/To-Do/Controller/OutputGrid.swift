@@ -1,5 +1,5 @@
 //
-//  OutputTableController.swift
+//  OutputTable.swift
 //
 //  Created by Mazari Bahaduri on 29/08/24.
 //  Copyright © 2024 Mazari Bahaduri. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OutputGridController: UITableViewController {
+class OutputGrid: UITableViewController {
     var itemsArray = [Task]()
     
     override func viewDidLoad() {

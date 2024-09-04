@@ -1,6 +1,6 @@
 import UIKit
 
-class UniqueDisplayController: UITableViewCell {
+class UniqueDisplay: UITableViewCell {
     let mainPNGDisplay: UIImageView = {
         let visualDisplay = UIImageView()
         visualDisplay.translatesAutoresizingMaskIntoConstraints = false

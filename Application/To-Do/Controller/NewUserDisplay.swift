@@ -1,5 +1,5 @@
 //
-//  NewUserViewController.swift
+//  NewUserView.swift
 //
 //  Created by Mazari Bahaduri on 29/08/24.
 //  Copyright © 2024 Mazari Bahaduri. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewUserDisplayController: UIViewController {
+class NewUserDisplay: UIViewController {
     
     private enum NonGlobalVals {
         static let edgeRad: CGFloat = 10

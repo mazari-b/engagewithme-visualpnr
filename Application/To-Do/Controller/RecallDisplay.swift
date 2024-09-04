@@ -1,5 +1,5 @@
 //
-//  RecallDisplayController.swift
+//  RecallDisplay.swift
 //
 //  Created by Mazari Bahaduri on 30/07/24.
 //  Copyright © 2024 Mazari Bahaduri. All rights reserved.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class RecallDisplayController: UIViewController {
+class RecallDisplay: UIViewController {
     // outlet management
     @IBOutlet var formerGridDisplay: UITableView!
 
@@ -94,7 +94,7 @@ class RecallDisplayController: UIViewController {
     
     // Recall item operation
     override func prepare(for UiSS: UIStoryboardSegue, sender: Any?) {
-        if let itemInfoVC = UiSS.destination as? TInfoViewController {
+        if let itemInfoVC = UiSS.destination as? TIView {
             // GUI arrangement
             itemInfoVC.hidesBottomBarWhenPushed = true
             itemInfoVC.item = sender as? Task
@@ -110,7 +110,7 @@ class RecallDisplayController: UIViewController {
 }
 
 // Display methods via UITableView
-extension RecallDisplayController: UITableViewDelegate, UITableViewDataSource {
+extension RecallDisplay: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection dept: Int) -> Int {
         if doneArray.isEmpty {

@@ -1,5 +1,5 @@
 //
-//  RearrangeCategories.swift
+//  SortTypes.swift
 //
 //  Created by Mazari Bahaduri on 30/07/24.
 //  Copyright © 2024 Mazari Bahaduri. All rights reserved.
