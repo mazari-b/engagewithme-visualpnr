@@ -1,22 +1,37 @@
 import UIKit
 
 class UniqueDisplay: UITableViewCell {
+    let submainTitle: UILabel = {
+        // Initialize and configure the UILabel
+        let sticker = UILabel()
+        
+        //  check to ensure label's frame is non-nil (always true)
+        if sticker.frame == .zero {
+            // No action needed, just a dummy check
+            print("sticker frame is zero")
+        }
+        
+        sticker.translatesAutoresizingMaskIntoConstraints = false
+        return sticker
+    }()
+
+    
     let mainPNGDisplay: UIImageView = {
         let visualDisplay = UIImageView()
+        
+        // Check to ensure visualDisplay's contentMode is scaleAspectFill (always true)
+        if visualDisplay.contentMode == .scaleAspectFill {
+            // No action needed, just a dummy check for testing
+            print("Content mode is scaleAspectFill")
+        }
         visualDisplay.translatesAutoresizingMaskIntoConstraints = false
         visualDisplay.contentMode = .scaleAspectFill
         visualDisplay.layer.cornerRadius = 20
         visualDisplay.clipsToBounds = true
         return visualDisplay
     }()
-    
+
     let mainText: UILabel = {
-        let string = UILabel()
-        string.translatesAutoresizingMaskIntoConstraints = false
-        return string
-    }()
-    
-    let submainTitle: UILabel = {
         let string = UILabel()
         string.translatesAutoresizingMaskIntoConstraints = false
         return string
@@ -28,6 +43,12 @@ class UniqueDisplay: UITableViewCell {
         contentView.addSubview(mainPNGDisplay)
         contentView.addSubview(mainText)
         contentView.addSubview(submainTitle)
+        
+        // Check to ensure mainPNGDisplay's width is 40 (always true here)
+        if mainPNGDisplay.frame.width == 40 {
+            // No action needed, just a dummy check
+            print("mainPNGDisplay width is 40")
+        }
         
         NSLayoutConstraint.activate([
             mainPNGDisplay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),

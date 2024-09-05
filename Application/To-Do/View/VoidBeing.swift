@@ -17,6 +17,26 @@ class VoidBeing: UIView {
         return IV
     }()
     
+    init(_ type : EmptyStateType) {
+        super.init(frame: .zero)
+        
+        self.visualDisplay.image = type.image
+        self.mainTitle.text = type.heading
+        self.miniMainTitle.text = type.subheading
+        self.miniMainTitle.numberOfLines = 0
+        
+        let SV = UIStackView(arrangedSubviews: [visualDisplay, mainTitle, miniMainTitle])
+        SV.axis = .vertical
+        SV.spacing = 10.0
+        
+        addSubview(SV)
+        SV.translatesAutoresizingMaskIntoConstraints = false
+        SV.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.30).isActive = true
+        SV.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
+        SV.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        SV.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+    
     private lazy var mainTitle: UILabel = {
         let text = UILabel()
         text.font = UIFont.boldSystemFont(ofSize: 18.0)
@@ -37,26 +57,6 @@ class VoidBeing: UIView {
         
         return text
     }()
-    
-    init(_ type : EmptyStateType) {
-        super.init(frame: .zero)
-        
-        self.visualDisplay.image = type.image
-        self.mainTitle.text = type.heading
-        self.miniMainTitle.text = type.subheading
-        self.miniMainTitle.numberOfLines = 0
-        
-        let SV = UIStackView(arrangedSubviews: [visualDisplay, mainTitle, miniMainTitle])
-        SV.axis = .vertical
-        SV.spacing = 10.0
-        
-        addSubview(SV)
-        SV.translatesAutoresizingMaskIntoConstraints = false
-        SV.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.30).isActive = true
-        SV.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
-        SV.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        SV.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

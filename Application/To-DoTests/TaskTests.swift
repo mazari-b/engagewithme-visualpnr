@@ -51,8 +51,8 @@ class TaskTests: XCTestCase {
         dueDateTimeStamp: Double,
         isFavourite: Bool = false,
         isComplete: Bool = false
-    ) -> Task? {
-        let task = Task(context: mockPersistantContainer.viewContext)
+    ) -> Item? {
+        let task = Item(context: mockPersistantContainer.viewContext)
         task.title = title
         task.subTasks = subtasks
         task.dueDate = dueDate
@@ -68,7 +68,7 @@ class TaskTests: XCTestCase {
     }
 
     func flushData() {
-        let objs = try! mockPersistantContainer.viewContext.fetch(Task.fetchRequest())
+        let objs = try! mockPersistantContainer.viewContext.fetch(Item.fetchRequest())
         for case let obj as NSManagedObject in objs {
             mockPersistantContainer.viewContext.delete(obj)
         }
@@ -79,7 +79,7 @@ class TaskTests: XCTestCase {
     // MARK:- Task Tests
 
     func testFetchAllTasks() {
-        let results = try? mockPersistantContainer.viewContext.fetch(Task.fetchRequest())
+        let results = try? mockPersistantContainer.viewContext.fetch(Item.fetchRequest())
         XCTAssertEqual(results?.count, 1)
     }
 
@@ -89,7 +89,7 @@ class TaskTests: XCTestCase {
     }
     
     func testMarkAsComplete() throws {
-        let tasks = try mockPersistantContainer.viewContext.fetch(Task.fetchRequest()) as? [Task]
+        let tasks = try mockPersistantContainer.viewContext.fetch(Item.fetchRequest()) as? [Item]
         let task = try XCTUnwrap(tasks?.first)
         
         let newIsCompleteValue = !task.isComplete

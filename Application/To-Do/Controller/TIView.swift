@@ -10,8 +10,8 @@ import UIKit
 import MobileCoreServices
 
 protocol SeparateTasks: class {
-    func hasClickedSubmit(task : Task)
-    func hasClickedModify(task : Task)
+    func hasClickedSubmit(task : Item)
+    func hasClickedModify(task : Item)
 }
 
 class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -25,7 +25,7 @@ class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     
     // initialisations
-    var item : Task? = nil
+    var item : Item? = nil
     var deadlineD : String = .empty
     var deadlineGrabber: UIDatePicker!
     var deadlineSetting: DateFormatter = DateFormatter()
@@ -40,21 +40,37 @@ class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     var tactileCreator: UINotificationFeedbackGenerator? = nil
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        chosenModify = (item != nil)
+    private func setupDeadlinePicker() {
         deadlineGrabber = UIDatePicker()
         deadlineGrabber.addTarget(self, action: #selector(clickedUpdateDate(_:)), for: .valueChanged)
         deadlineGrabber.minimumDate = Date()
         deadlineBox.inputView = deadlineGrabber
         deadlineSetting.dateStyle = .medium
+    }
+
+    private func configureTapToDismiss() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Determine if modifying an existing task
+        chosenModify = (item != nil)
+
+        // Configure the date picker for the deadline
+        setupDeadlinePicker()
+
+        // Configure task input elements
         sTaskNameBox.addBorder()
-        callTaskModify()
         taskNameBox.delegate = self
-        
-        // click elsewhere to go back to full view
-        let click = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(click)
+        callTaskModify()
+
+        // Dismiss keyboard by tapping outside
+        configureTapToDismiss()
+
+        // Set publish button title based on task modification state
         publishTask.title = chosenModify ? Predefined.Operation.resubmit : Predefined.Operation.add
     }
     
@@ -159,7 +175,28 @@ class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         // Present the action sheet
         self.present(actionSheet, animated: true, completion: nil)
     }
-
+    
+    /// checks if item is legitimate: TITLE & DATE
+    func legitimateTask() -> Bool {
+        if taskNameBox.text?.trim().isEmpty ?? true {
+            Notify.TitleIsNeeded(on: self)
+            return false
+        } else if deadlineBox.text?.trim().isEmpty ?? true {
+            Notify.DueDateNeeded(on: self)
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    // updating the date
+    @objc func clickedUpdateDate(_ dispatcher: UIDatePicker) {
+        deadlineSetting.dateFormat = "MM/dd/yyyy hh:mm a"
+        let clickedDate = dispatcher.date
+        self.clickedDT = dispatcher.date.timeIntervalSince1970
+        deadlineD = deadlineSetting.string(from: clickedDate)
+        deadlineBox.text = deadlineD
+    }
     
     @IBAction func saveTapped(_ dispatcher: UIBarButtonItem) {
         tactileCreator = UINotificationFeedbackGenerator()
@@ -186,37 +223,25 @@ class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         tactileCreator = nil
     }
     
-    /// checks if item is legitimate: TITLE & DATE
-    func legitimateTask() -> Bool {
-        if taskNameBox.text?.trim().isEmpty ?? true {
-            Notify.TitleIsNeeded(on: self)
-            return false
-        } else if deadlineBox.text?.trim().isEmpty ?? true {
-            Notify.DueDateNeeded(on: self)
-            return false
-        } else {
-            return true
-        }
-    }
-    
-    // this takes all entered info to create the foundation of task
-    func foundationOfTask()->Task? {
+    func foundationOfTask() -> Item? {
+        // Extract and trim text input values
         let name = taskNameBox.text?.trim() ?? .empty
         let additionalName = sTaskNameBox.text?.trim() ?? .empty
-        /// are we modifying?
-        if self.item == nil {
-            let primaryCtrl = self.distribute as! TDView
-            self.item = Task(context: primaryCtrl.CDmanagedojt)
+        // Initialize or modify the task item
+        if item == nil {
+            guard let primaryCtrl = distribute as? TDView else { return nil }
+            item = Item(context: primaryCtrl.CDmanagedojt)
         }
+        // Set task properties
         item?.title = name
+        item?.dueDateTimeStamp = clickedDT ?? 0
         item?.subTasks = additionalName
         item?.dueDate = deadlineD
-        item?.dueDateTimeStamp = clickedDT ?? 0
         item?.attachments = try? NSKeyedArchiver.archivedData(withRootObject: visualsAdded, requiringSecureCoding: false)
         item?.isComplete = false
-        
         return item
     }
+
     
     func callTaskModify() {
         guard let item = self.item else {
@@ -232,18 +257,16 @@ class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             visualsAdded = NSKeyedUnarchiver.unarchiveObject(with: visuals) as? [UIImage] ?? []
         }
     }
-    
-    // updating the date
-    @objc func clickedUpdateDate(_ dispatcher: UIDatePicker) {
-        deadlineSetting.dateFormat = "MM/dd/yyyy hh:mm a"
-        let clickedDate = dispatcher.date
-        self.clickedDT = dispatcher.date.timeIntervalSince1970
-        deadlineD = deadlineSetting.string(from: clickedDate)
-        deadlineBox.text = deadlineD
-    }
-    
+
 }
 extension TIView: UITextFieldDelegate, UITextViewDelegate {
+    func textViewDidEndEditing(_ TV: UITextView) {
+        if TV.text.isEmpty {
+            TV.text = "Please type your routines here"
+            TV.textColor = .placeholderText
+        }
+    }
+    
     func textFieldShouldReturn(_ stringFromField: UITextField) -> Bool {
         if stringFromField == taskNameBox {
             stringFromField.resignFirstResponder()
@@ -258,32 +281,28 @@ extension TIView: UITextFieldDelegate, UITextViewDelegate {
             TV.textColor = .black
         }
     }
-    
-    func textViewDidEndEditing(_ TV: UITextView) {
-        if TV.text.isEmpty {
-            TV.text = "Enter your subtasks here"
-            TV.textColor = .placeholderText
-        }
-    }
 }
 
 extension TIView: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ CView: UICollectionView, didSelectItemAt idxWay: IndexPath) {
+        debugPrint("Click: \(idxWay.row) \(visualsAdded[idxWay.row])")
+    }
     
     func collectionView(_ CView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return visualsAdded.count
     }
     
     func collectionView(_ CView: UICollectionView, cellForItemAt idxWay: IndexPath) -> UICollectionViewCell {
-        
+        // Dequeue a reusable cell
         let block = CView.dequeueReusableCell(withReuseIdentifier: Predefined.Block.photoCell, for: idxWay) as! visualAdd
+        
+        // Get the visual item for the current index
         let visual = visualsAdded[idxWay.row]
         
+        // Configure the cell with the visual
         block.setImage(visual)
         
         return block
     }
-    
-    func collectionView(_ CView: UICollectionView, didSelectItemAt idxWay: IndexPath) {
-        debugPrint("Click: \(idxWay.row) \(visualsAdded[idxWay.row])")
-    }
+
 }

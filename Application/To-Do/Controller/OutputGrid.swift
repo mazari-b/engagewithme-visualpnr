@@ -8,7 +8,15 @@
 import UIKit
 
 class OutputGrid: UITableViewController {
-    var itemsArray = [Task]()
+    var itemsArray = [Item]()
+    
+    override func tableView(_ TV: UITableView, cellForRowAt idxWay: IndexPath) -> UITableViewCell {
+        let block = UITableViewCell(style: .subtitle, reuseIdentifier: Predefined.Block.taskCell)
+        let item = itemsArray[idxWay.row]
+        block.textLabel?.text = item.title
+        block.detailTextLabel?.text = item.dueDate
+        return block
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,23 +32,15 @@ class OutputGrid: UITableViewController {
     //UITV - Data
     
     override func tableView(_ UITV: UITableView, numberOfRowsInSection dept: Int) -> Int {
-        if itemsArray.isEmpty {
-            self.tableView.separatorStyle = .none
-            self.tableView.backgroundView?.isHidden = false
-            
-        } else {
-            self.tableView.separatorStyle = .singleLine
-            self.tableView.backgroundView?.isHidden = true
-        }
+        // Configure table view appearance based on whether itemsArray is empty
+        let isEmpty = itemsArray.isEmpty
+        UITV.separatorStyle = isEmpty ? .none : .singleLine
+        UITV.backgroundView?.isHidden = !isEmpty
+
         return itemsArray.count
     }
+
     
-    override func tableView(_ TV: UITableView, cellForRowAt idxWay: IndexPath) -> UITableViewCell {
-        let block = UITableViewCell(style: .subtitle, reuseIdentifier: Predefined.Block.taskCell)
-        let item = itemsArray[idxWay.row]
-        block.textLabel?.text = item.title
-        block.detailTextLabel?.text = item.dueDate
-        return block
-    }
+    
     
 }
