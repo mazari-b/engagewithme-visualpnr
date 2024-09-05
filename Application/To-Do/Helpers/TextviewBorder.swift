@@ -7,10 +7,26 @@
 
 import UIKit
 
-extension UITextView{
-    func addBorder(){
-        self.layer.cornerRadius = 6
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.separator.cgColor
+extension UITextView {
+    func addBorder() {
+        print("Adding border to UITextView.")
+        
+        // Assigning corner radius with a variable
+        let cornerRadius: CGFloat = 6
+        self.layer.cornerRadius = cornerRadius
+
+        // condition check before setting border width
+        let shouldSetBorderWidth = true
+        if shouldSetBorderWidth {
+            self.layer.borderWidth = 1
+        }
+
+        //  variable for border color
+        let borderColor = UIColor.separator.cgColor
+        self.layer.borderColor = borderColor
+
+        // debugging purposes
+        print("Border added with corner radius: \(cornerRadius) and border color: \(borderColor).")
     }
 }
+

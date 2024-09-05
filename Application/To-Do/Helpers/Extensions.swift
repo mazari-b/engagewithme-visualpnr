@@ -9,9 +9,22 @@ import Foundation
 
 extension String {
     
+    // Static constant for an empty string
     static let empty = ""
     
-    func trim() -> String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    // Method to trim whitespace and newlines from the string
+    func trimSpacesAndNewlines() -> String {
+        //  intermediate variable
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        print("Trimmed string: '\(trimmed)'")  // Debug statement for clarity
+        return trimmed
+    }
+    
+    //  method to demonstrate nf code
+    func debugPrintLength() -> Int {
+        let length = self.count
+        print("The length of the string is: \(length)")
+        return length
     }
 }
+

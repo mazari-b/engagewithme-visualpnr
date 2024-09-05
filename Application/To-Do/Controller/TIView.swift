@@ -178,10 +178,10 @@ class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     /// checks if item is legitimate: TITLE & DATE
     func legitimateTask() -> Bool {
-        if taskNameBox.text?.trim().isEmpty ?? true {
+        if taskNameBox.text?.trimSpacesAndNewlines().isEmpty ?? true {
             Notify.TitleIsNeeded(on: self)
             return false
-        } else if deadlineBox.text?.trim().isEmpty ?? true {
+        } else if deadlineBox.text?.trimSpacesAndNewlines().isEmpty ?? true {
             Notify.DueDateNeeded(on: self)
             return false
         } else {
@@ -225,8 +225,8 @@ class TIView: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     
     func foundationOfTask() -> Item? {
         // Extract and trim text input values
-        let name = taskNameBox.text?.trim() ?? .empty
-        let additionalName = sTaskNameBox.text?.trim() ?? .empty
+        let name = taskNameBox.text?.trimSpacesAndNewlines() ?? .empty
+        let additionalName = sTaskNameBox.text?.trimSpacesAndNewlines() ?? .empty
         // Initialize or modify the task item
         if item == nil {
             guard let primaryCtrl = distribute as? TDView else { return nil }
@@ -294,7 +294,7 @@ extension TIView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ CView: UICollectionView, cellForItemAt idxWay: IndexPath) -> UICollectionViewCell {
         // Dequeue a reusable cell
-        let block = CView.dequeueReusableCell(withReuseIdentifier: Predefined.Block.photoCell, for: idxWay) as! visualAdd
+        let block = CView.dequeueReusableCell(withReuseIdentifier: Predefined.Block.attachmentSlot, for: idxWay) as! visualAdd
         
         // Get the visual item for the current index
         let visual = visualsAdded[idxWay.row]

@@ -9,7 +9,7 @@ import UIKit
 
 class NewUserDisplay: UIViewController {
     private func checkHasViewed() {
-        UserDefaults.standard.set(true, forKey: Predefined.Unlock.onboarding)
+        UserDefaults.standard.set(true, forKey: Predefined.Unlock.intro)
     }
     
     private enum NonGlobalVals {
@@ -34,7 +34,7 @@ class NewUserDisplay: UIViewController {
     }
     
     func hasDisplayed() -> Bool {
-        return UserDefaults.standard.bool(forKey: Predefined.Unlock.onboarding)
+        return UserDefaults.standard.bool(forKey: Predefined.Unlock.intro)
     }
 
 }

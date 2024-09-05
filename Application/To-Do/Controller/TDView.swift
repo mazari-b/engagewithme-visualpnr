@@ -196,7 +196,7 @@ class TDView: UITableViewController {
     
     fileprivate func presentPreMainOptional() {
         // Attempt to instantiate the onboarding view controller
-        let newUserCtrl = storyboard?.instantiateViewController(identifier: Predefined.VC.Onboarding) as? NewUserDisplay
+        let newUserCtrl = storyboard?.instantiateViewController(identifier: Predefined.VC.Introducing) as? NewUserDisplay
 
         // Check if the controller was created and hasn't been displayed yet
         let shouldPresent = (newUserCtrl != nil) && !(newUserCtrl?.hasDisplayed() ?? true)
@@ -211,7 +211,7 @@ class TDView: UITableViewController {
     
     fileprivate func initialiseFindCtrl() {
         // Instantiate the results table controller
-        if let RC = storyboard?.instantiateViewController(withIdentifier: Predefined.VC.ResultsTable) as? OutputGrid {
+        if let RC = storyboard?.instantiateViewController(withIdentifier: Predefined.VC.OutputGrid) as? OutputGrid {
             outputTableCtrl = RC
             outputTableCtrl.tableView.delegate = self
         }
@@ -260,7 +260,7 @@ class TDView: UITableViewController {
     /// particular row to present
     override func tableView(_ UiTV: UITableView, cellForRowAt idxWay: IndexPath) -> UITableViewCell {
         // Dequeue a reusable cell
-        guard let block = UiTV.dequeueReusableCell(withIdentifier: Predefined.Block.taskCell, for: idxWay) as? TodoCell else {
+        guard let block = UiTV.dequeueReusableCell(withIdentifier: Predefined.Block.itemSlot, for: idxWay) as? TodoCell else {
             fatalError("Unable to dequeue TodoCell")
         }
         

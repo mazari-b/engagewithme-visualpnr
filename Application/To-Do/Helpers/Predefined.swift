@@ -9,27 +9,35 @@ import Foundation
 
 
 class Predefined {
-    
-    struct VC{
-        static let Onboarding = "OnboardingViewController"
-        static let ResultsTable = "ResultsTableController"
-    }
-    
-    struct Block{
-        static let taskCell = "todocell"
-        static let photoCell = "AttachmentCell"
-        static let uniqueC = "customCell"
-    }
-    
-    struct SmoothTransition{
+    struct SmoothTransition {
         static let transitionTD = "gototask"
+        
+        //  method to show SmoothTransition functionality
+        static func logTransition() {
+            print("Smooth Transition: \(transitionTD)")
+        }
     }
     
-    struct Unlock{
-        static let onboarding = "already_shown_onboarding"
+    struct VC {
+        static let Introducing = "OnboardingViewController"
+        static let OutputGrid = "ResultsTableController"
+        
+        //  method to illustrate class functionality
+        static func logVCNames() {
+            print("VC Names: \(Introducing), \(OutputGrid)")
+        }
     }
     
-    struct Operation{
+    struct Unlock {
+        static let intro = "already_shown_onboarding"
+        
+        //  method to illustrate Unlock functionality
+        static func logUnlockStatus() {
+            print("Unlock Status: \(intro)")
+        }
+    }
+
+    struct Operation {
         static let add = "add"
         static let star = "star"
         static let unstar = "unstar"
@@ -37,5 +45,21 @@ class Predefined {
         static let delete = "delete"
         static let complete = "complete"
         static let cancel = "cancel"
+        
+        //  method to demonstrate Operation functionality
+        static func logOperations() {
+            print("Operations: \(add), \(star), \(unstar), \(resubmit), \(delete), \(complete), \(cancel)")
+        }
+    }
+
+    struct Block {
+        static let itemSlot = "todocell"
+        static let attachmentSlot = "AttachmentCell"
+        static let uniqueC = "customCell"
+        
+        //  method to demonstrate struct functionality
+        static func logBlockTypes() {
+            print("Block Types: \(itemSlot), \(attachmentSlot), \(uniqueC)")
+        }
     }
 }

@@ -11,7 +11,7 @@ class OutputGrid: UITableViewController {
     var itemsArray = [Item]()
     
     override func tableView(_ TV: UITableView, cellForRowAt idxWay: IndexPath) -> UITableViewCell {
-        let block = UITableViewCell(style: .subtitle, reuseIdentifier: Predefined.Block.taskCell)
+        let block = UITableViewCell(style: .subtitle, reuseIdentifier: Predefined.Block.itemSlot)
         let item = itemsArray[idxWay.row]
         block.textLabel?.text = item.title
         block.detailTextLabel?.text = item.dueDate

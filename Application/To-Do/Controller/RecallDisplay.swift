@@ -133,7 +133,7 @@ extension RecallDisplay: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ display: UITableView, cellForRowAt idxWay: IndexPath) -> UITableViewCell {
         let todoitem = doneArray[idxWay.row]
-        let block = display.dequeueReusableCell(withIdentifier: Predefined.Block.taskCell, for: idxWay) as! TodoCell
+        let block = display.dequeueReusableCell(withIdentifier: Predefined.Block.itemSlot, for: idxWay) as! TodoCell
         block.ministring.text = todoitem.dueDate
         block.mainstring.text = todoitem.title
         block.prioritiseVisual.isHidden = true
